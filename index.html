@@ -100,10 +100,10 @@ var PHRASES=["Техно-контент и крутые проекты","Пок�
 var grid=document.getElementById("grid");
 PROJECTS.forEach(function(p,i){
   var c=document.createElement("div");c.className="card rev";c.style.transitionDelay=(i*80)+"ms";
-  c.innerHTML='<div class="icon" style="animation-delay:'+(i*.4)+'s">'+p.icon+'</div><h3></h3><p></p><div class="tags"></div><a class="btn" target="_blank" rel="noopener">⬇ Скачать</a>';
+  c.innerHTML='<div class="icon" style="animation-delay:'+(i*.4)+'s">'+p.icon+'</div><h3></h3><p></p><div class="tags"></div><a class="btn dl" target="_blank" rel="noopener">⬇ Скачать</a> <a class="btn ghost repo" target="_blank" rel="noopener">GitHub</a>';
   c.querySelector("h3").textContent=p.title;c.querySelector("p").textContent=p.desc;
   p.tags.forEach(function(t){var s=document.createElement("span");s.textContent=t;c.querySelector(".tags").appendChild(s)});
-  c.querySelector("a").href=p.url;
+  c.querySelector(".dl").href=p.url;c.querySelector(".repo").href=p.url.replace(/\/raw\/.*$/,"");
   c.addEventListener("mousemove",function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
     c.style.setProperty("--mx",x*100+"%");c.style.setProperty("--my",y*100+"%");
     c.style.transform="perspective(700px) rotateX("+((.5-y)*8)+"deg) rotateY("+((x-.5)*8)+"deg)"});
